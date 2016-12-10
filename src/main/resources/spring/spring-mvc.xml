@@ -11,19 +11,15 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
        default-lazy-init="true">
     <mvc:annotation-driven/>
     <!-- 使Spring支持自动检测组件，如注解的Controller -->
-    <context:component-scan base-package="com.fireoct"
-                            use-default-filters="false">
-        <context:include-filter expression="org.springframework.stereotype.Controller"
-                                type="annotation"/>
+    <context:component-scan base-package="com.panhainan" use-default-filters="false">
+        <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
         <!-- 在springMVC配置文件中将Service注解给去掉,而由applicationContext.xml父容器进行初始化以保证service的事务的增强处理 -->
-        <context:exclude-filter expression="org.springframework.stereotype.Service"
-                                type="annotation"/>
+        <context:exclude-filter expression="org.springframework.stereotype.Service" type="annotation"/>
     </context:component-scan>
 
     <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射,解决@ResponseBody乱码问题, 需要在annotation-driven和component-scan之前,否则乱码问题同样无法解决 -->
-    <!-- Spring3.1推荐使用RequestMappingHandlerAdapter -->
-    <bean
-            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <!-- Spring3.1-x推荐使用RequestMappingHandlerAdapter -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
                 <ref bean="stringHttpMessageConverter"/>
@@ -39,8 +35,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/" p:suffix=".jsp"/>
 
-    <bean
-            class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+    <bean  class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 
     <!-- 处理JSON数据转换，为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->
     <bean id="mappingJacksonHttpMessageConverter"
@@ -69,7 +64,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
     <!--<mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean  class="com.fireoct.interceptor.*"/>
+            <bean  class="com.panhainan.interceptor.*"/>
         </mvc:interceptor>
     </mvc:interceptors>-->
 </beans>

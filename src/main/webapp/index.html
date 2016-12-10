@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>fo-ssm框架</title>
+</head>
+<style>
+    table {
+        padding: 20px;
+        background-color: #F3F3F3;
+    }
+
+    table tr td {
+        min-width: 160px;
+    }
+
+    table tr th {
+        text-align: left;
+    }
+    a{
+        cursor: pointer;
+        text-decoration: underline;
+        color:blue;
+    }
+</style>
+<body>
+<h2 style="text-align: center">fo-ssm框架测试案例页面</h2>
+<p style="text-align: center">作者：潘海南</p>
+
+<p>
+    下面介绍一下案例Demo的API调用方式：
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>请求方式</th>
+            <th>URL</th>
+            <th>说明</th>
+            <th>测试（注意打开浏览器console查看）</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>POST</td>
+        <td>/api/demo</td>
+        <td>添加（需提供需要添加的demo信息）</td>
+        <td><a onclick="add('name')">添加demo(name)</a></td>
+    </tr>
+    <tr>
+        <td>GET</td>
+        <td>/api/demo/1</td>
+        <td>查看id为1的demo记录</td>
+        <td><a onclick="get(1)">获取id为1的demo记录</a></td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>/api/demo/1</td>
+        <td>删除id为1的demo记录</td>
+        <td><a onclick="remove(1)">删除id为1的demo记录</a></td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/api/demo/1</td>
+        <td>更新id为1的demo记录（需提供需要更新的demo信息）</td>
+        <td><a onclick="edit(1,'name-edit')">更新id为1的demo记录为demo(name-edit)</a></td>
+    </tr>
+    </tbody>
+</table>
+<p>注意：fo-ssm的请求方式使用restful风格，不懂的可以搜索restful风格了解释义。</p>
+<p>详情请查看代码，如有不懂请联系作者。</p>
+<div style="margin-left: 60px;background-color: #F3F3F3;width: 600px;padding: 20px 40px;">
+    潘海南 <br/><br/>
+    网站：<a href="http://www.panhainan.com" target="_blank">panhainan.com</a> <br/><br/>
+    邮箱：panhainan@yeah.net <br/><br/>
+    Q Q ：1016593477 <br/>
+</div>
+</body>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script>
+    <!--将项目名抽出便于统一更改-->
+    var project_name = "fo-ssm";
+    function get(id){
+        $.ajax({
+            url: 'api/demo/'+id,
+            type: 'GET',
+            dataType:'json',
+            data: {},
+            success: function (data) {
+                console.info(data)
+            }
+        });
+    };
+    function remove(id){
+        $.ajax({
+            url: 'api/demo/'+id,
+            type: 'DELETE',
+            dataType:'json',
+            data: {},
+            success: function (data) {
+                console.info(data)
+            }
+        });
+    };
+    function edit(id,name){
+        $.ajax({
+            url: 'api/demo/'+id,
+            type: 'PUT',
+            dataType:'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify({"name":name}),
+            success: function (data) {
+                console.info(data)
+            }
+        });
+    };
+    function add(name){
+        $.ajax({
+            url: 'api/demo',
+            type: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            dataType:'json',
+            data: JSON.stringify({"name":name}),
+            success: function (data) {
+                console.info(data)
+            }
+        });
+    }
+</script>
+</html>
