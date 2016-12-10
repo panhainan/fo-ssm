@@ -1,0 +1,5 @@
+主要需要修改的地方为：
+项目的包名，原包名为com.panhainan，修改成你的包名。
+由于项目包名在配置中需要使用，因此在spring-mvc.xml和applicationContext.xml里面的context:component-scan 需要将其中的包名改为你的包名；还有在applicationContext.xml里面的配置mybatis的注入dao接口配置处将包名修改。
+
+其他的根据自己的需要进行修改，比如数据库配置，日志配置等等
