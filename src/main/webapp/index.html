@@ -5,6 +5,10 @@
     <title>fo-ssm框架</title>
 </head>
 <style>
+    body {
+        padding: 10px 60px;
+    }
+
     table {
         padding: 20px;
         background-color: #F3F3F3;
@@ -17,14 +21,22 @@
     table tr th {
         text-align: left;
     }
-    a{
+
+    a {
         cursor: pointer;
         text-decoration: underline;
-        color:blue;
+        color: blue;
+    }
+
+    .author {
+        background-color: #F3F3F3;
+        width: 600px;
+        padding: 20px 40px;
     }
 </style>
 <body>
 <h2 style="text-align: center">fo-ssm框架测试案例页面</h2>
+
 <p style="text-align: center">作者：潘海南</p>
 
 <p>
@@ -32,12 +44,12 @@
 </p>
 <table>
     <thead>
-        <tr>
-            <th>请求方式</th>
-            <th>URL</th>
-            <th>说明</th>
-            <th>测试（注意打开浏览器console查看）</th>
-        </tr>
+    <tr>
+        <th>请求方式</th>
+        <th>URL</th>
+        <th>说明</th>
+        <th>测试（注意打开浏览器console查看）</th>
+    </tr>
     </thead>
     <tbody>
 
@@ -68,8 +80,10 @@
     </tbody>
 </table>
 <p>注意：fo-ssm的请求方式使用restful风格，不懂的可以搜索restful风格了解释义。</p>
+
 <p>详情请查看代码，如有不懂请联系作者。</p>
-<div style="margin-left: 60px;background-color: #F3F3F3;width: 600px;padding: 20px 40px;">
+
+<div class="author">
     潘海南 <br/><br/>
     网站：<a href="http://www.panhainan.com" target="_blank">panhainan.com</a> <br/><br/>
     邮箱：panhainan@yeah.net <br/><br/>
@@ -80,44 +94,47 @@
 <script>
     <!--将项目名抽出便于统一更改-->
     var project_name = "fo-ssm";
-    function get(id){
+    function get(id) {
         $.ajax({
-            url: 'api/demo/'+id,
+            url: 'api/demo/' + id,
             type: 'GET',
-            dataType:'json',
+            dataType: 'json',
             data: {},
             success: function (data) {
                 console.info(data)
             }
         });
-    };
-    function remove(id){
+    }
+    ;
+    function remove(id) {
         $.ajax({
-            url: 'api/demo/'+id,
+            url: 'api/demo/' + id,
             type: 'DELETE',
-            dataType:'json',
+            dataType: 'json',
             data: {},
             success: function (data) {
                 console.info(data)
             }
         });
-    };
-    function edit(id,name){
+    }
+    ;
+    function edit(id, name) {
         $.ajax({
-            url: 'api/demo/'+id,
+            url: 'api/demo/' + id,
             type: 'PUT',
-            dataType:'json',
+            dataType: 'json',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            data: JSON.stringify({"name":name}),
+            data: JSON.stringify({"name": name}),
             success: function (data) {
                 console.info(data)
             }
         });
-    };
-    function add(name){
+    }
+    ;
+    function add(name) {
         $.ajax({
             url: 'api/demo',
             type: 'POST',
@@ -125,8 +142,8 @@
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            dataType:'json',
-            data: JSON.stringify({"name":name}),
+            dataType: 'json',
+            data: JSON.stringify({"name": name}),
             success: function (data) {
                 console.info(data)
             }
