@@ -43,7 +43,7 @@
             </list>
         </property>
     </bean>
-    <!-- 该方式用来注入dao或者mapper接口 -->
+    <!-- 该方式用来注入dao接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.panhainan.dao" />
     </bean>
