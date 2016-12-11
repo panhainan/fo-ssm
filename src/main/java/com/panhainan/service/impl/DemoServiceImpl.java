@@ -6,6 +6,8 @@ import com.panhainan.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * 测试案例：Demo的业务逻辑实现类
  * 注意：目前没有对异常进行处理，没有支持事务
@@ -24,6 +26,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public int add(Demo demo) {
+        demo.setOpreateTime(new Date());
         int affectedRows = demoDao.insert(demo);
         //这里可以抽出封装为一个工具类
         if(affectedRows>=1){
@@ -55,6 +58,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public boolean edit(Demo demo) {
+        demo.setOpreateTime(new Date());
         int affectedRows = demoDao.update(demo);
         if(affectedRows>=1){
             return true;
