@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>传参：数组</title>
+    <link rel="stylesheet" href="css/base.css"/>
+</head>
+<body>
+<h2 style="text-align: center">SpringMVC传参“数组”测试案例页面</h2>
+
+<p style="text-align: center">作者：潘海南</p>
+
+<p>
+    下面介绍一下几种方式。
+</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>请求方式</th>
+        <th>URL</th>
+        <th>参数接收类型</th>
+        <th>测试（注意打开浏览器console查看）</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>POST</td>
+        <td>/api/params/list-json</td>
+        <td>JSON List<></td>
+        <td><a onclick="post01('api/params/list-json2')">测试JSON List</a></td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/params/list</td>
+        <td>FORM List<></td>
+        <td><a onclick="post02('api/params/list-form2')">测试FORM List</a></td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/params/list</td>
+        <td>Integer[]<></td>
+        <td><a onclick="post03('api/params/list-form7')">测试Integer[]</a></td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/params/list</td>
+        <td>int[]<></td>
+        <td><a onclick="post03('api/params/list-form8')">测试int[]</a></td>
+    </tr>
+    </tbody>
+</table>
+api/params/list-form3 <br/>
+带参考：<br/>
+http://jxd-zxf.iteye.com/blog/2072300<br/>
+http://www.cnblogs.com/fangjian0423/p/springMVC-request-param-analysis.html<br/>
+</body>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script>
+    <!--将项目名抽出便于统一更改-->
+    var project_name = "fo-ssm";
+    var ContentTypeForm = 'application/x-www-form-urlencoded;charset=utf-8;';
+    var ContentTypeJson = 'application/json;charset=utf-8;';
+    var ContentTypeFile = undefined;
+    function post01(url) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: {
+                'Content-Type': ContentTypeJson
+            },
+            dataType: 'json',
+            data: JSON.stringify(
+                    [
+                        {"id": 1, "name": "张三"},
+                        {"id": 2, "name": "李四"},
+                        {"id": 3, "name": "王五"}]),
+            success: function (data) {
+                console.info(data)
+            }
+        });
+    }
+    function post02(url) {
+        var demo1 = {"id": 1, "name": "张三"};
+        var demo2 = {"id": 2, "name": "张三"};
+        var demo3 = {"id": 3, "name": "张三"};
+        var demoList = new Array();
+        demoList.push(demo1);
+        demoList.push(demo2);
+        demoList.push(demo3);
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: {
+//                'Accept':'text/html,application/xhtml+xml,application/xml',
+                'Content-Type': ContentTypeForm
+            },
+            data: {"demoList": demoList},
+            success: function (data) {
+                console.info(data)
+            }
+        });
+    }
+    function post03(url) {
+        var ids = [1, 6, 8];
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: {
+                'Content-Type': ContentTypeForm
+            },
+            data: ids,
+            success: function (data) {
+                console.info(data)
+            }
+        })
+    }
+</script>
+
+</html>

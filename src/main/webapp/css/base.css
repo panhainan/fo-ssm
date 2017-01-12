@@ -1,0 +1,27 @@
+body {
+    padding: 10px 60px;
+}
+
+table {
+    padding: 20px;
+    background-color: #F3F3F3;
+}
+
+table tr td {
+    min-width: 160px;
+}
+
+table tr th {
+    text-align: left;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+.author {
+    background-color: #F3F3F3;
+    width: 600px;
+    padding: 20px 40px;
+}
