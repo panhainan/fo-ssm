@@ -1,7 +1,7 @@
-package com.panhainan.controller;
+package com.panhainan.web;
 
 import com.panhainan.common.CommonResult;
-import com.panhainan.pojo.Demo;
+import com.panhainan.entity.Demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-json2", method = RequestMethod.POST)
@@ -37,7 +37,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form2", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form3", method = RequestMethod.POST)
@@ -55,7 +55,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form4", method = RequestMethod.POST)
@@ -64,7 +64,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form5", method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form6", method = RequestMethod.POST)
@@ -82,7 +82,7 @@ public class ArrayParamsController {
         for(Demo demo :demoList){
             System.out.println(demo);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",demoList);
+        return new CommonResult(CommonResult.SUCCESS,demoList);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form7", method = RequestMethod.POST)
@@ -91,7 +91,7 @@ public class ArrayParamsController {
         for(Integer id :ids){
             System.out.println(id);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",ids);
+        return new CommonResult(CommonResult.SUCCESS,ids);
     }
     @ResponseBody
     @RequestMapping(value = "/list-form8", method = RequestMethod.POST)
@@ -100,6 +100,6 @@ public class ArrayParamsController {
         for(Integer id :ids){
             System.out.println(id);
         }
-        return new CommonResult(CommonResult.SUCCESS_CODE,"List Params",ids);
+        return new CommonResult(CommonResult.SUCCESS,ids);
     }
 }

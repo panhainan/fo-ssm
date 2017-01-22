@@ -1,37 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0" id="WebApp_ID">
-    <display-name></display-name>
-    <!-- spring 容器 -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath*:spring/applicationContext.xml
-        </param-value>
-    </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <!--spring mvc 配置 -->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+    <!-- 修改maven生成的servlet版本，使用3.0 -->
+
+    <!-- 配置DispatcherServlet -->
     <servlet>
-        <servlet-name>springMVC</servlet-name>
+        <servlet-name>ssm-dispatcher-servlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 配置SpringMVC需要加载的配置文件
+            spring-dao，spring-service，spring-web
+            Mybatis -> Spring -> SpringMVC
+        -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>
-                classpath*:spring/spring-mvc.xml
-            </param-value>
+            <param-value>classpath:spring/spring-*.xml</param-value>
         </init-param>
-        <load-on-startup>1</load-on-startup>
-        <!-- 是启动顺序，让这个Servlet随Servlet容器一起启动。 -->
     </servlet>
     <servlet-mapping>
-        <servlet-name>springMVC</servlet-name>
+        <servlet-name>ssm-dispatcher-servlet</servlet-name>
+        <!-- 配置过滤所有请求，符合SpringMVC对Restful的支持 -->
         <url-pattern>/</url-pattern>
-        <!-- 会拦截/的请求。 -->
     </servlet-mapping>
+
     <!-- encodeing -->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -45,30 +38,13 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-    <!-- encoding filter for jsp page -->
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <!-- 静态资源放行,注意不能有和controller层的url相同的配置，因此可以配后缀 -->
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.html</url-pattern>
-        <url-pattern>*.js</url-pattern>
-        <url-pattern>*.css</url-pattern>
-        <url-pattern>*.scss</url-pattern>
-        <url-pattern>*.ttf</url-pattern>
-        <url-pattern>*.woff</url-pattern>
-        <url-pattern>*.woff2</url-pattern>
-        <url-pattern>*.jpg</url-pattern>
-        <url-pattern>*.jpeg</url-pattern>
-        <url-pattern>*.gif</url-pattern>
-        <url-pattern>*.png</url-pattern>
-        <url-pattern>*.pdf</url-pattern>
-        <url-pattern>*.map</url-pattern>
-    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

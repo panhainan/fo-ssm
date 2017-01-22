@@ -1,59 +1,59 @@
 package com.panhainan.common;
 
 /**
- * HTTP请求返回结果公共类
+ * HTTP请求返回JSON格式结果公共类
+ *
  * @author panhainan
+ * @version 1.0
  * @email panhainan@yeah.net
- * @version 1.0 */
-public class CommonResult {
-    public static final int SUCCESS_CODE = 1;
-    public static final int FAIL_CODE=0;
-
+ */
+public class CommonResult<T> {
+    public final static boolean SUCCESS = true;
+    public final static boolean FAIL = false;
     /**
-     * 操作结果码，对应上面的定义的SUCCESS_CODE、FAIL_CODE
+     * 操作是否成功
      */
-    private Integer resultCode;
+    private boolean isSuccess;
     /**
      * 操作结果信息，主要用来存储操作失败时对异常信息做出的提示信息
      */
-    private String resultMsg;
+    private String errorMsg;
     /**
      * 操作结果数据集，用来存储要返回给前端的数据，可以是对象、集合等等
      */
-    private Object resultData;
+    private T data;
 
-    public CommonResult(Integer resultCode, String resultMsg) {
-        this.resultCode = resultCode;
-        this.resultMsg = resultMsg;
+    public CommonResult(boolean isSuccess, T data) {
+        this.isSuccess = isSuccess;
+        this.data = data;
     }
 
-    public CommonResult(Integer resultCode, String resultMsg, Object resultData) {
-        this.resultCode = resultCode;
-        this.resultMsg = resultMsg;
-        this.resultData = resultData;
+    public CommonResult(boolean isSuccess, String errorMsg) {
+        this.isSuccess = isSuccess;
+        this.errorMsg = errorMsg;
     }
 
-    public Integer getResultCode() {
-        return resultCode;
+    public boolean isSuccess() {
+        return isSuccess;
     }
 
-    public void setResultCode(Integer resultCode) {
-        this.resultCode = resultCode;
+    public void setSuccess(boolean isSuccess) {
+        this.isSuccess = isSuccess;
     }
 
-    public String getResultMsg() {
-        return resultMsg;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setResultMsg(String resultMsg) {
-        this.resultMsg = resultMsg;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
-    public Object getResultData() {
-        return resultData;
+    public T getData() {
+        return data;
     }
 
-    public void setResultData(Object resultData) {
-        this.resultData = resultData;
+    public void setData(T data) {
+        this.data = data;
     }
 }

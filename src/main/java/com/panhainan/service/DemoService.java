@@ -1,6 +1,6 @@
 package com.panhainan.service;
 
-import com.panhainan.pojo.Demo;
+import com.panhainan.entity.Demo;
 
 /**
  * 测试案例：Demo的业务逻辑接口

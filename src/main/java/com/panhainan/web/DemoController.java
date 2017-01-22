@@ -1,7 +1,7 @@
-package com.panhainan.controller;
+package com.panhainan.web;
 
 import com.panhainan.common.CommonResult;
-import com.panhainan.pojo.Demo;
+import com.panhainan.entity.Demo;
 import com.panhainan.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,9 +40,9 @@ public class DemoController {
             isSuccess = false;
         } finally {
             if (isSuccess) {
-                commonResult = new CommonResult(CommonResult.SUCCESS_CODE, msg, resultData);
+                commonResult = new CommonResult(CommonResult.SUCCESS,resultData);
             } else {
-                commonResult = new CommonResult(CommonResult.FAIL_CODE, msg);
+                commonResult = new CommonResult(CommonResult.FAIL, msg);
             }
         }
         return commonResult;
@@ -63,9 +63,9 @@ public class DemoController {
             isSuccess = false;
         } finally {
             if (isSuccess) {
-                commonResult = new CommonResult(CommonResult.SUCCESS_CODE, msg, resultData);
+                commonResult = new CommonResult(CommonResult.SUCCESS, resultData);
             } else {
-                commonResult = new CommonResult(CommonResult.FAIL_CODE, msg);
+                commonResult = new CommonResult(CommonResult.FAIL, msg);
             }
         }
         return commonResult;
@@ -86,9 +86,9 @@ public class DemoController {
             isSuccess = false;
         } finally {
             if (isSuccess) {
-                commonResult = new CommonResult(CommonResult.SUCCESS_CODE, msg, resultData);
+                commonResult = new CommonResult(CommonResult.SUCCESS, resultData);
             } else {
-                commonResult = new CommonResult(CommonResult.FAIL_CODE, msg);
+                commonResult = new CommonResult(CommonResult.FAIL, msg);
             }
         }
         return commonResult;
@@ -110,9 +110,9 @@ public class DemoController {
             isSuccess = false;
         } finally {
             if (isSuccess) {
-                commonResult = new CommonResult(CommonResult.SUCCESS_CODE, msg, resultData);
+                commonResult = new CommonResult(CommonResult.SUCCESS, resultData);
             } else {
-                commonResult = new CommonResult(CommonResult.FAIL_CODE, msg);
+                commonResult = new CommonResult(CommonResult.FAIL, msg);
             }
         }
         return commonResult;

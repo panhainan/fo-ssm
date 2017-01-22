@@ -1,7 +1,7 @@
 package com.panhainan.service.impl;
 
 import com.panhainan.dao.DemoDao;
-import com.panhainan.pojo.Demo;
+import com.panhainan.entity.Demo;
 import com.panhainan.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.Date;
  * @email panhainan@yeah.net
  * @version 1.0
  */
-@Service("demoService")
+@Service
 public class DemoServiceImpl implements DemoService {
 
     /**

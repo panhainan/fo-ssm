@@ -1,6 +1,6 @@
 package com.panhainan.dao;
 
-import com.panhainan.pojo.Demo;
+import com.panhainan.entity.Demo;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -1,4 +1,4 @@
-package com.panhainan.pojo;
+package com.panhainan.entity;
 
 import java.util.Date;
 
