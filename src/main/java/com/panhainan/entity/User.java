@@ -22,6 +22,22 @@ public class User {
     private Date birth;
     private String profile;
 
+
+    public User() {
+    }
+
+    public User(String userName, String userPass) {
+        this.userName = userName;
+        this.userPass = userPass;
+    }
+
+    public User(String userName, String userPass, String userEmail) {
+        this.userName = userName;
+        this.userPass = userPass;
+        this.userEmail = userEmail;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +

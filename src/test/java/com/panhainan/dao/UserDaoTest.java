@@ -25,7 +25,6 @@ public class UserDaoTest extends BaseDaoTest {
         user.setUserName("fireoct");
         user.setUserPass("123456");
         user.setUserEmail("123456789@qq.com");
-        user.setRegisterTime(new Date());
         user.setStatus(AccountStatusEnum.ACTIVED.getStatus());
         int insertCount = userDao.insert(user);
         logger.info("insertCount=" + insertCount);
@@ -38,7 +37,6 @@ public class UserDaoTest extends BaseDaoTest {
         user.setUserName("fireoct");
         user.setUserPass("123456");
         user.setUserEmail("123456789@qq.com");
-        user.setRegisterTime(new Date());
         user.setStatus(AccountStatusEnum.ACTIVED.getStatus());
         int insertCount = userDao.insert(user);
         logger.info("insertCount=" + insertCount);
