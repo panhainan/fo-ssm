@@ -2,15 +2,27 @@
 -- mysql -uroot -p123456
 
 USE test;
-DROP TABLE IF EXISTS `demo`;
-CREATE TABLE `demo` (
-  `id`           INT(10) NOT NULL AUTO_INCREMENT,
-  `name`         VARCHAR(30)      DEFAULT NULL,
-  `opreate_time` DATETIME         DEFAULT NULL,
-  PRIMARY KEY (`id`)
+
+
+DROP TABLE IF EXISTS `user`;
+create table `user` (
+  `id` int(10) not null AUTO_INCREMENT,
+  `user_name` varchar(20) not null COMMENT '用户名',
+  `user_pass` varchar(20) not null COMMENT '用户密码',
+  `user_email` VARCHAR(20) not null COMMENT '用户邮箱',
+  `register_time` DATETIME not null COMMENT '注册时间',
+  `nick_name` VARCHAR(20) COMMENT '昵称',
+  `status` TINYINT(1) not null COMMENT '账户状态',
+  `sex` TINYINT(1) COMMENT '性别',
+  `birth` DATE COMMENT '出生日期',
+  `profile` VARCHAR(500) COMMENT '个人简介',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`user_name`) USING HASH,
+  UNIQUE KEY `email` (`user_email`) USING HASH,
+  UNIQUE KEY `id` (`id`) USING BTREE
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
-  COMMENT = 'SSM测试Demo表';
+  COMMENT = '用户信息表';
 
 -- 手写ddl，记录每次sql修改
