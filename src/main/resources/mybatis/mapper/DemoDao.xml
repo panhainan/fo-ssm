@@ -5,40 +5,40 @@
 
     <!-- 通过指定keyProperty为数据库表对应的id，这里插入成功会在demo对象中自动注入插入的id -->
     <insert id="insert" keyProperty="id">
-		INSERT INTO
-		demo(
-		  name,
-		  opreate_time
+        INSERT INTO
+        demo(
+        name,
+        opreate_time
         )
-		VALUES(
-		  #{name,jdbcType=VARCHAR},
-		  #{opreateTime,jdbcType=TIMESTAMP}
+        VALUES(
+        #{name,jdbcType=VARCHAR},
+        #{opreateTime,jdbcType=TIMESTAMP}
         )
-	</insert>
+    </insert>
 
     <!-- 根据id删除 -->
     <delete id="delete">
-		DELETE FROM demo
-		WHERE
-		  id = #{id,jdbcType=INTEGER}
-	</delete>
+        DELETE FROM demo
+        WHERE
+        id = #{id,jdbcType=INTEGER}
+    </delete>
 
     <!-- 根据id查找 -->
     <select id="select" resultType="Demo">
         SELECT *
         FROM demo
         WHERE
-          id = #{id,jdbcType=INTEGER}
+        id = #{id,jdbcType=INTEGER}
     </select>
 
     <!-- 更新操作 -->
     <update id="update">
-		UPDATE demo
-		SET
-		  name = #{name,jdbcType=VARCHAR},
-		  opreate_time = #{opreateTime,jdbcType=TIMESTAMP}
-		WHERE
-		  id = #{id,jdbcType=INTEGER}
-	</update>
+        UPDATE demo
+        SET
+        name = #{name,jdbcType=VARCHAR},
+        opreate_time = #{opreateTime,jdbcType=TIMESTAMP}
+        WHERE
+        id = #{id,jdbcType=INTEGER}
+    </update>
 
 </mapper>
