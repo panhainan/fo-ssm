@@ -7,14 +7,14 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>登录</title>
+    <title>注册</title>
 
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/sign.css" rel="stylesheet">
 
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
     <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
@@ -28,16 +28,22 @@
 <body>
 <div class="container">
 
-    <form class="form-signin" action="/user/signIn" method="post">
-        <h2 class="form-signin-heading">登录</h2>
+    <form class="form-signup">
+        <h2 class="form-signup-heading">注册</h2>
         <br/>
         <label for="inputAccount" class="sr-only">账号</label>
         <input type="text" name="userName" id="inputAccount" class="form-control" placeholder="账号" required autofocus>
         <br/>
+        <label for="inputAccount" class="sr-only">邮箱</label>
+        <input type="email" name="userEmail" id="inputEmail" class="form-control" placeholder="邮箱" required autofocus>
+        <br/>
         <label for="inputPassword" class="sr-only">密码</label>
         <input type="password" name="userPass" id="inputPassword" class="form-control" placeholder="密码" required>
         <br/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <label for="inputPassword" class="sr-only">确认密码</label>
+        <input type="password" name="userPass" id="inputConfirmPassword" class="form-control" placeholder="确认密码"  required>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" onclick="signUp()" type="button">注册</button>
     </form>
 
 </div>
@@ -49,6 +55,9 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+<script src="js/sign.js"></script>
 </body>
+
 
 </html>
