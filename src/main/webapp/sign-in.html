@@ -27,19 +27,36 @@
 </head>
 <body>
 <div class="container">
+    <div class="row">
+        <form id="signInForm" name="form"
+              class="form-horizontal col-sm-6 col-sm-offset-3"
+              onsubmit="form.$valid && signIn()" role="form">
+            <h2 style="text-align: center">登录</h2>
+            <br/>
 
-    <form class="form-signin">
-        <h2 class="form-signin-heading">登录</h2>
-        <br/>
-        <label for="inputAccount" class="sr-only">账号</label>
-        <input type="text" name="userName" id="inputAccount" class="form-control" placeholder="账号" required autofocus>
-        <br/>
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" name="userPass" id="inputPassword" class="form-control" placeholder="密码" required>
-        <br/>
-        <button class="btn btn-lg btn-primary btn-block" onclick="signIn()" type="button">登录</button>
-    </form>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">用户名</label>
 
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="userName" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">密码</label>
+
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" name="userPass" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button type="submit" name="submit" class="btn btn-md btn-primary btn-block">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 <!-- /container -->
 
@@ -49,9 +66,7 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-
+<script src="lib/bootstrapValidator.min.js"></script>
 <script src="js/sign.js"></script>
 </body>
-
-
 </html>

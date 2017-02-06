@@ -1,6 +1,8 @@
 package com.panhainan.service.impl;
 
+import com.panhainan.common.CommonValue;
 import com.panhainan.dao.UserDao;
+import com.panhainan.dto.CheckResult;
 import com.panhainan.dto.UserSignInResult;
 import com.panhainan.dto.UserSignUpResult;
 import com.panhainan.entity.User;
@@ -15,6 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 测试案例：User的业务逻辑实现类
@@ -32,45 +37,58 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserSignUpResult signUp(UserSignUpForm userSignUpForm)
             throws SystemException {
+
+        // 检查用户账户名和邮箱是否已存在
+        if(checkUserIsExistByName(userSignUpForm.getUserName()) || checkUserIsExistByEmail(userSignUpForm.getUserEmail())){
+            throw new DataExistException("用户名或邮箱"+CommonValue.CANNT_USE);
+        }
+        User user = new User(
+                userSignUpForm.getUserName(),
+                userSignUpForm.getUserPass(),
+                userSignUpForm.getUserEmail());
         try {
-            // 检查用户账户名和邮箱是否已存在
-            if(checkUserIsExistByName(userSignUpForm.getUserName())){
-                throw new DataInsertException("该用户名已经存在");
-            }
-            if(checkUserIsExistByEmail(userSignUpForm.getUserEmail())){
-                throw new DataInsertException("该邮箱已经存在");
-            }
-            User user = new User(
-                    userSignUpForm.getUserName(),
-                    userSignUpForm.getUserPass(),
-                    userSignUpForm.getUserEmail());
             int insertCount = userDao.insert(user);
             if (insertCount > 0) {
                 return new UserSignUpResult(true, userSignUpForm.getUserName());
-            }else{
-                throw new DataInsertException("数据插入失败");
+            } else {
+                throw new DataInsertException();
             }
-        }catch (DataInsertException e){
-            throw e;
-        }catch (Exception e) {
-            logger.error(e.getMessage(),e);
-            throw new SystemException("系统异常："+e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new DataInsertException();
         }
     }
-
     private boolean checkUserIsExistByName(String userName){
         User user = userDao.selectByUserName(userName);
-        if(user!=null){
+        if (user != null) {
             return true;
+        }else{
+            return false;
         }
-        return false;
     }
-    private  boolean checkUserIsExistByEmail(String userEmail){
-        User user = userDao.selectByUserEmail(userEmail);
-        if(user!=null){
-            return true;
+    @Override
+    public CheckResult checkUserNameIsExist(String userName) {
+        if (checkUserIsExistByName(userName)) {
+            return new CheckResult(true,CommonValue.CANNT_USE);
+        } else{
+            return new CheckResult(false,CommonValue.CAN_USE);
         }
-        return false;
+    }
+    private boolean checkUserIsExistByEmail(String userEmail){
+        User user = userDao.selectByUserEmail(userEmail);
+        if (user != null) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    @Override
+    public CheckResult checkUserEmailIsExist(String userEmail) {
+        if (checkUserIsExistByEmail(userEmail)) {
+            return new CheckResult(true,CommonValue.CANNT_USE);
+        } else{
+            return new CheckResult(false,CommonValue.CAN_USE);
+        }
     }
 
     @Override
@@ -78,19 +96,15 @@ public class UserServiceImpl implements UserService {
         // TODO 密码加密解密处理
 
         User user = userDao.selectByUserName(userSignInForm.getUserName());
-        if(user==null){
+        if (user == null) {
             throw new DataExistException("用户不存在");
         }
-        if(!user.getUserPass().equals(userSignInForm.getUserPass())){
+        if (!user.getUserPass().equals(userSignInForm.getUserPass())) {
             throw new DataMatchException("用户名或密码错误");
-        }else{
-            // TODO 用户登录状态保存处理
-            return new UserSignInResult(true,userSignInForm.getUserName());
+        } else {
+            // PS 用户登录状态保存处理操作在Controller中
+            return new UserSignInResult(true, userSignInForm.getUserName());
         }
     }
 
-    @Override
-    public void signOut() {
-
-    }
 }

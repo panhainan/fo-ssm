@@ -23,6 +23,10 @@ public class CommonResult<T> {
      */
     private T data;
 
+    public CommonResult(boolean isSuccess) {
+        this.isSuccess = isSuccess;
+    }
+
     public CommonResult(boolean isSuccess, T data) {
         this.isSuccess = isSuccess;
         this.data = data;
