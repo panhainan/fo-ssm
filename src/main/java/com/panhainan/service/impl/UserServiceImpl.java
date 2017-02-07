@@ -39,8 +39,11 @@ public class UserServiceImpl implements UserService {
             throws SystemException {
 
         // 检查用户账户名和邮箱是否已存在
-        if(checkUserIsExistByName(userSignUpForm.getUserName()) || checkUserIsExistByEmail(userSignUpForm.getUserEmail())){
-            throw new DataExistException("用户名或邮箱"+CommonValue.CANNT_USE);
+        if (checkUserIsExistByName(userSignUpForm.getUserName())) {
+            throw new DataExistException("用户名" + CommonValue.CANNT_USE);
+        }
+        if (checkUserIsExistByEmail(userSignUpForm.getUserEmail())) {
+            throw new DataExistException("邮箱" + CommonValue.CANNT_USE);
         }
         User user = new User(
                 userSignUpForm.getUserName(),
@@ -58,36 +61,40 @@ public class UserServiceImpl implements UserService {
             throw new DataInsertException();
         }
     }
-    private boolean checkUserIsExistByName(String userName){
+
+    private boolean checkUserIsExistByName(String userName) {
         User user = userDao.selectByUserName(userName);
         if (user != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     @Override
     public CheckResult checkUserNameIsExist(String userName) {
         if (checkUserIsExistByName(userName)) {
-            return new CheckResult(true,CommonValue.CANNT_USE);
-        } else{
-            return new CheckResult(false,CommonValue.CAN_USE);
+            return new CheckResult(true, CommonValue.CANNT_USE);
+        } else {
+            return new CheckResult(false, CommonValue.CAN_USE);
         }
     }
-    private boolean checkUserIsExistByEmail(String userEmail){
+
+    private boolean checkUserIsExistByEmail(String userEmail) {
         User user = userDao.selectByUserEmail(userEmail);
         if (user != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     @Override
     public CheckResult checkUserEmailIsExist(String userEmail) {
         if (checkUserIsExistByEmail(userEmail)) {
-            return new CheckResult(true,CommonValue.CANNT_USE);
-        } else{
-            return new CheckResult(false,CommonValue.CAN_USE);
+            return new CheckResult(true, CommonValue.CANNT_USE);
+        } else {
+            return new CheckResult(false, CommonValue.CAN_USE);
         }
     }
 
