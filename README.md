@@ -30,6 +30,8 @@
 </div>
 
 
-大家如果觉得好的话请打个6支持一下，谢谢！  
+大家如果觉得好的话请打个6...支持一下，谢谢！  
 
-<img src="http://onxe6sbvc.bkt.clouddn.com/pay.jpg" width="200px"></img>
+<img src="http://onxe6sbvc.bkt.clouddn.com/alpay.jpg" width="200px"></img>
+
+<img src="http://onxe6sbvc.bkt.clouddn.com/wxpay.png" width="200px"  style="float:left;margin-left:50px"></img>
