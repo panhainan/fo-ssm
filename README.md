@@ -30,3 +30,6 @@
 </div>
 
 
+大家如果觉得好的话请打个6支持一下，谢谢！  
+
+<img src="http://onxe6sbvc.bkt.clouddn.com/pay.jpg"></img>
