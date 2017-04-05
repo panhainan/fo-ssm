@@ -30,7 +30,8 @@
 </div>
 
 
-大家如果觉得好的话请打个6...支持一下，谢谢！  
+
+# 如果觉得好，就请支持一下，谢谢！  
 
 <div>
 <div  style="float:left;"><img src="http://onxe6sbvc.bkt.clouddn.com/alpay.jpg" width="200px"></img></div>
